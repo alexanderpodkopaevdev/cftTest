@@ -29,7 +29,7 @@
         <configuration>
             <archive>
                 <manifest>
-                    <mainClass>org.podkopaev.App</mainClass>
+                    <mainClass>org.podkopaev.FileSort</mainClass>
                 </manifest>
             </archive>
         </configuration>
