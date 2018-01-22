@@ -18,4 +18,4 @@ java -jar <путь к cft_test.jar> <имя файла с входными да
 -d - по убыванию
 
 Пример запуска:  
-java -jar cftTest-1.0.jar in.txt out.txt -i -a (для целых чисел по возрастанию)
+java -jar cftTest-1.jar in.txt out.txt -i -a (для целых чисел по возрастанию)
