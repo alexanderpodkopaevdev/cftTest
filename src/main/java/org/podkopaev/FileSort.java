@@ -31,7 +31,7 @@ public class FileSort {
 
     //Выход из программы с указанием ошибки
     private static void exitAfterPress(String errorText) {
-        String warningText = "Ошибка в программе, ознакомтесь с информацией и нажмите Enter для выхода";
+        String warningText = "Ознакомтесь с информацией и нажмите Enter для выхода";
         System.out.println(warningText + "\n" + errorText);
         try {
             System.in.read();
@@ -51,7 +51,7 @@ public class FileSort {
             askQuestion("Неверно указан параметр для выбора чисел и строк. Использовать строки по умолчанию или закрыть программу?");
         if (param2.equals("-d")) {
             waningOrAscending = true;
-        } else if (param1.equals("-a")) {
+        } else if (param2.equals("-a")) {
             waningOrAscending = false;
         } else
             askQuestion("Неверно указан параметр для выбора режима сортировки. Использовать сортировку по возрастанию по умолчанию или закрыть программу?");
@@ -63,7 +63,7 @@ public class FileSort {
         try {
             String answer = reader.readLine();
             if (!(answer.equals("Y")||(answer.equals("y")))) {
-                exitAfterPress("Работа с программой окончена");
+                exitAfterPress("Работа с программой завершена");
             }
         } catch (IOException ex) {
             exitAfterPress("Произошла ошибка ввода");
@@ -87,7 +87,7 @@ public class FileSort {
 
     //Проверка соответствия типа файлов и выбранных параметров
     private static String[] sortArr(ArrayList<String> list) {
-        String[] readyArray = new String[list.size()];
+        String[] readyArray;
         if (intOrString) {
             int[] arrayInt = new int[list.size()];
             try {
@@ -97,6 +97,7 @@ public class FileSort {
                 readyArray = insertionSort(arrayInt);
             } catch (NumberFormatException ex) {
                 askQuestion("Указанный файл содержит не только числа. По умолчанию он будет отсортирован как строковый");
+                readyArray = insertionSort(list);
             }
         } else readyArray = insertionSort(list);
         return readyArray;
@@ -114,7 +115,7 @@ public class FileSort {
             array[j + 1] = key;
         }
         String[] readyArray = new String[array.length];
-        for (int i : array) {
+        for (int i = 0; i < array.length; i++) {
             readyArray[i] = String.valueOf(array[i]);
         }
         return readyArray;
