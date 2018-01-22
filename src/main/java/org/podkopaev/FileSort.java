@@ -31,7 +31,7 @@ public class FileSort {
 
     //Выход из программы с указанием ошибки
     private static void exitAfterPress(String errorText) {
-        String warningText = "Ошибка в программе, ознакомтесь с информацией и нажмите любую кнопку для выхода";
+        String warningText = "Ошибка в программе, ознакомтесь с информацией и нажмите Enter для выхода";
         System.out.println(warningText + "\n" + errorText);
         try {
             System.in.read();
@@ -48,21 +48,21 @@ public class FileSort {
         } else if (param1.equals("-s")) {
             intOrString = false;
         } else
-            askQuestion("Неверно указан параметр для выбора чисел и строк. Использовать строки по-умолчанию или закрыть программу?");
+            askQuestion("Неверно указан параметр для выбора чисел и строк. Использовать строки по умолчанию или закрыть программу?");
         if (param2.equals("-d")) {
             waningOrAscending = true;
         } else if (param1.equals("-a")) {
             waningOrAscending = false;
         } else
-            askQuestion("Неверно указан параметр для выбора режима сортировки. Использовать сортировку по возрастанию по-умолчанию или закрыть программу?");
+            askQuestion("Неверно указан параметр для выбора режима сортировки. Использовать сортировку по возрастанию по умолчанию или закрыть программу?");
     }
 
     //Вывод сообщений при предупреждениях
     private static void askQuestion(String text) {
-        System.out.println(text + "\n" + "Если хотите продолжить с параметом по-умолчанию введите \"Y\"");
+        System.out.println(text + "\n" + "Если хотите продолжить с параметом по умолчанию введите \"Y\"");
         try {
             String answer = reader.readLine();
-            if (!(answer.equals("Y"))) {
+            if (!(answer.equals("Y")||(answer.equals("y")))) {
                 exitAfterPress("Работа с программой окончена");
             }
         } catch (IOException ex) {
@@ -96,7 +96,7 @@ public class FileSort {
                 }
                 readyArray = insertionSort(arrayInt);
             } catch (NumberFormatException ex) {
-                askQuestion("Указанный файл содержит не только числа. По-умолчанию он будет отсортирован как строковый");
+                askQuestion("Указанный файл содержит не только числа. По умолчанию он будет отсортирован как строковый");
             }
         } else readyArray = insertionSort(list);
         return readyArray;
